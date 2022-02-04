@@ -5,7 +5,7 @@ Joel the Birb is available right here on your screen/in your pocket to inspire, 
 You can view Joel online on his [Website](https://joel-online.web.app). You can also [download the android app](https://joel-online.web.app/apk/latest) or see him on Newgrounds.
 
 ## Installing source code
-If you want Joel's full source code, go to the `web` branch and download the zip. You just have to open `index.html` in a browser and you will have the app ready for you.
+If you want Joel's full source code, go to the `master` branch and download the zip. You just have to open `index.html` in a browser and you will have the app ready for you.
 
 If you just want Joel's assets, download the `art` branch.
 
