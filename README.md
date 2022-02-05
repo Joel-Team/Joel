@@ -4,12 +4,8 @@ Joel the Birb is available right here on your screen/in your pocket to inspire, 
 ## View
 You can view Joel online on his [Website](https://joel-online.web.app). You can also [download the android app](https://joel-online.web.app/apk/latest) or see him on Newgrounds.
 
-## Installing source code
-If you want Joel's full source code, go to the `master` branch and download the zip. You just have to open `index.html` in a browser and you will have the app ready for you.
-
-If you just want Joel's assets, download the `art` branch.
-
-If you're looking for the Android app, you can find its full source code in the `android` branch. You can build it with Apache Cordova. 
+## Art
+You can find Joel's full assets over at the `art` branch.
 
 # Birb
 ![alt](https://media.discordapp.net/attachments/827393319021707294/827761278792892446/ezgif.com-gif-maker_4.gif)
