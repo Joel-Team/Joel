@@ -1,0 +1,321 @@
+#detector {
+	display: none;
+}
+
+.mini-icon {
+	width: 20px;
+	object-fit: cover;
+	height: 10px;
+	object-position: center;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.dropzone {
+	box-sizing: border-box;
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 99999;
+	background-color: rgba(248, 239, 95, 0.3);
+	border: 11px dashed rgb(248, 239, 95);
+}
+
+/* CSS files add styling rules to your content */
+@font-face {
+	font-family: joelFont;
+	src: url(joel2.ttf);
+  }
+  
+  @font-face {
+	  font-family: 'Quicksand';
+	  font-style: normal;
+	  font-weight: 400;
+	  font-display: swap;
+	  src: url(Quicksand-Regular.ttf);
+	}
+  
+  /*@media (min-width: 789px) { */
+  @media (min-width: 600px) {
+	  .joelBirb.invertedHand {
+		   position: absolute;
+		   top: 50%;
+		   transform: translate(50%, -50%) scaleX(-1);
+		   right: 35%;
+		   width: 300px;
+		   -webkit-transform: translate(50%, -50%) scaleX(-1);
+	 }
+	 .textArea.invertedHand {
+		position: absolute;
+		left: 25%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 350px;
+	 }
+	 .joelBirb.defaultHand {
+		position: absolute;
+		left: 25%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 300px;
+	 }
+	 .textArea.defaultHand {
+		   position: absolute;
+		   top: 50%;
+		   transform: translate(50%, -50%);
+		   right: 35%;
+		   width: 350px;
+	 }
+	 .toggleGroup {
+		 margin-left: 50%;
+		 text-align:left;
+		 transform: translate(-50%, 0%);
+	 }
+  }
+  
+  @media (max-width: 599px) and (min-height: 490px) {
+	 .joelBirb {
+		   position: absolute;
+		   top: 35%;
+		   transform: translate(-50%, -50%);
+		   -webkit-transform: translate(-50%, -50%); 
+		   width: 350px;
+	  }
+	 .textArea {
+		   position: absolute;
+		   top: calc(35% + 220px);
+		   left: 50%;
+		   transform: translate(-50%, -50%);
+		   -webkit-transform: translate(-50%, -50%); 
+		   width: 350px;
+	  }
+	  .invertToggle {
+		  display:none;
+	  }
+	  .toggleGroup {
+		 margin-left: 55%;
+		 text-align: left;
+		 transform: translate(-50%, 0%);
+		 width:100%;
+	 }
+  }
+  
+  
+  html {
+	  padding:0;
+	  height: 100%;
+	  width: 100%;
+	  margin: 0;
+  }
+  
+  body {
+	font-family: quicksand;
+	margin: 0;
+	text-align: center;
+	color: white;
+	width: 100%;
+	height: 100%;
+  }
+  
+  .page {
+	   background-color: #1b1b1b;
+	   width: 100vw;
+	   min-height: 100vh;
+	   position: absolute;
+	   top:0;
+	   left:0;
+	   overflow: hidden;
+  }
+  
+  .joelfont {
+	  font-family: joelFont;
+  }
+  
+  
+  .fade-in {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
+  }
+  @keyframes fadeIn {
+  0% {opacity:0.3;}
+  100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+  0% {opacity:0.3;}
+  100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+  0% {opacity:0.3;}
+  100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+  0% {opacity:0.3;}
+  100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+  0% {opacity:0.3;}
+  100% {opacity:1;}
+  }
+
+  .hover-fade-big {
+	border-radius: 50%;
+	transition: transform .2s;
+	opacity:0.75;
+	transform: scale(0.9);
+  }
+  .hover-fade-big:hover {
+	border-radius: 40%;
+	opacity:0.8;
+	transform: scale(1.0);
+  }
+  .hover-fade-big:focus {
+	border-radius: 40%;
+	opacity:1.0;
+	transform: scale(1.0);
+	outline:none;
+  }
+  
+.banner {
+height: 70px;
+}
+
+.scene {
+	display:block;
+	border: 1px solid white;
+}
+
+  .fullcanvas {
+	  z-index: 0;
+	  position:absolute;
+	  top:0;
+	  left:0;
+  }
+  
+  #menu-page {
+	  z-index:2;
+	  display:none;
+  }
+  
+  #launcher-page {
+	  z-index:8;
+  }
+
+  #updater-page {
+	z-index:7;
+	display:none;
+  }
+  
+  #changelog-page {
+	z-index:6;
+	display:none;
+  }
+
+  #debug-page {
+	  z-index:9;
+	  display:none;
+  }
+
+  #story-page {
+	z-index:9;
+	display:none;
+	}
+  
+  #menu-button {
+	  z-index:5;
+	  position:fixed;
+	  top:18px;
+	  right:15px;
+  }
+
+  #settings-pronouns-page {
+	  z-index:3;
+  }
+
+  #settings-music-page {
+	z-index:3;
+	}
+
+  #credits-page {
+	  z-index:4;
+  }
+  
+  .hidescroll::-webkit-scrollbar {
+	display: none;
+  }
+  
+  .hidescroll {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+  }
+  
+  .noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+  .toggleicon {
+	  width: 55px; /* width of container */
+	  height: 30px; /* height of container */
+	  object-fit: cover;
+  }
+
+  .radioicon {
+	width: 25px; /* width of container */
+}
+  
+  
+  a[href] {
+	  color:#fff96f;
+  }
+
+  .slider {
+	-webkit-appearance: none;
+	width: 150px;
+	height: 8px;
+	border-radius: 5px;  
+	background: #8c893e;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%; 
+	/*background: #f5ef5e;*/
+	background: url(assets/misc/feather_base.png);
+	background-size: cover;
+	/*border: 1px solid black;*/
+	transform: rotate(25deg) scale(1.5);
+	cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: #f5ef5e;
+	border: 1px solid black;
+	cursor: pointer;
+  }

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <title>Joel App // Version not found</title>
+	<link rel="shortcut icon" href="img/icon_v3_circular.png">
+	<link rel="manifest" href="/manifest.json">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!--<link href="quicksand.css" rel="stylesheet">-->
+
+    <!-- import the webpage's javascript file -->
+	
+	<script src="confetti.js"></script>
+	
+	<script src="version.js" defer></script>
+	<script src="profiles.js" defer></script>
+	<script src="images.js" defer></script>
+	<script src="script.js" defer></script>
+	<script src="quotes.js" defer></script>
+	<script src="storybuilder.js" defer></script>
+	<script src="js/installable.js" id="instscript" defer></script>
+
+		<!-- Google Firebase Notification scripts -->
+		<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="js/stacktrace.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<!--<script type="text/javascript" src="cordova.js"></script>-->
+
+  </head>  
+  
+  <body class="hidescroll noselect" ondrag="return false;" ondrop="return false;" draggable="false" onload="checkassets(); loadSettings(); checkInstallable();">
+	<div id="dropzone" class="dropzone"><span style="display:inline-block;font-size:2em;margin-top:auto;margin-bottom:auto;">Drop your Story file here!</span></div>
+  <span id="detector"></span>
+  <div id="menu-button" onclick="toggleMenu();">
+		<img draggable="false" src="assets/misc/joel_menu_tm1.png" style="width:50px;" class="makeclick">
+  </div>
+
+  <div id="debug-page" class="page" style="display:none;">
+	<span style="font-size: 45pt;"><b>Debug</b></span><br>
+	<details><summary>User experience</summary>
+	Set Joel image to: <input oninput="try{joel.src = eval(this.value);}catch(e){}" placeholder="party_loop[3]"><br>
+	Play Joel animation: <input id="joelanimdebug" placeholder="worm"><input id="joelanim2debug" type="number" placeholder="dpf" style="width: 32px;"><input id="joelanim3debug" type="number" placeholder="loop" style="width: 32px;"> <button onclick="animateJoel(eval(document.getElementById('joelanimdebug').value), parseInt(document.getElementById('joelanim2debug').value, 10), parseInt(document.getElementById('joelanim3debug').value, 10));document.getElementById('debug-page').style.display='none';">Go!</button><br>
+
+	Set background color: <input type="color" oninput="pageColor(this.value); document.getElementById('colorchangedisplay').value = this.value;">
+	<input disabled id="colorchangedisplay"><br>
+	Play music track: <input id="debugmusic"> <button onclick="changeMusic(eval(document.getElementById('debugmusic').value));">Go!</button><br>
+	Set quote: <textarea oninput="document.getElementById('tooltip').innerHTML = this.value;"></textarea><br><br>
+	Set name: <input oninput="document.getElementById('birbName').innerHTML = this.value;"> 
+	</details><br><details><summary>Hitboxes</summary>
+	
+	Show image borders: <input type="checkbox" onclick="debugImages(this, 'img')"><br>
+	Show paragraph borders: <input type="checkbox" onclick="debugImages(this, 'p')"><br>
+	Show text borders: <input type="checkbox" onclick="debugImages(this, 'span')"><br>
+	Show all element borders: <input type="checkbox" onclick="debugImages(this, '*')"><br>
+	</details>
+	<br>
+	<details><summary>Advanced</summary>
+	<br>Override origin:
+	<select oninput="build = this.value; document.getElementById('build').innerHTML = build;">
+		<option value="Newgrounds build">uploads.ungrounded.com</option>
+		<option value="Online build">.web.app</option>
+		<option value="Browser Development Build">joel/www/index</option>
+		<option value="Development Build">www/index</option>
+		<option value="Android Build">.apk</option>
+		<option value="Unknown build">(other)</option>
+	</select>
+
+	<br><input type="button" value="Disable sleep until refresh" onclick="var nosleep = setInterval(function(){sleepTime = 0;});"><br>
+	</details>
+	<br><br><button onclick="document.getElementById('debug-page').style.display='none';">Close debug</button>
+	<input type="range" class="slider">
+  </div>
+
+  <div id="story-page" class="page" style="display:none;">
+	<span style="font-size: 45pt;"><b>Story Builder</b></span><br>
+	<a href="javascript:void(0)" onclick="document.getElementById('story-page').style.display = 'none';">Close</a><br><br>
+	<a href="javascript:void(0)" onclick="addScene()">Add Scene</a> || 
+	<a href="javascript:void(0)" onclick="clearStory(true)">Clear Story</a> || 
+	<a href="javascript:void(0)" onclick="playStory()">Preview Story</a> || 
+	<a href="javascript:void(0)" onclick="exportStory()">Export Story</a><br>
+	<br>
+	<div id="story-builder-scenes">
+
+	</div>
+  </div>
+
+  <div id="launcher-page" class="page" onclick="launch();">
+	    <!--<img draggable="false" src="assets/Joel_Original_TSA1.png" class="joelBirb">--><br>
+		<div id="launcher-placeholder"><img src="assets/misc/loading.gif" width="100"><br><br>Loading...<br><br><span id="dangerindicator" style="display:none;">Looks like this is taking longer than expected. If you see this message for more than a minute, <a href="mailto:joelteamofficial@gmail.com">contact us</a>. Something may have gone wrong.</span><br><br>
+			<script>
+				window.setTimeout(function(){
+					document.getElementById("dangerindicator").style.display="inline";
+				}, 8000);
+			</script>
+			<noscript>
+				Joel needs javascript in order to run. Please load this page in a different browser.
+			</noscript>
+   		</div>
+	<div style="position:absolute;top:50%;left:50%; transform: translate(-50%, -50%); background-color: #1b1b1b; width:100%;height:100%;" id="installContainer" class="hidden">
+		<span style="font-size: 45pt;display:inline;"><b>Install app</b></span><br>
+		<p style="font-size: 14pt;">Would you like to download Joel for your device as a web app?<br>
+		<a href="javascript:void(0)" id="butInstall">Sure!</a><br><br>
+		<a href="javascript:void(0)" onclick="launchable = true; launch();">No, thank you</a></p>
+	</div>
+	<div style="position:absolute;top:50%;left:50%; transform: translate(-50%, -50%); display:none;" id="launcher-details"> 
+		<span style="font-size: 45pt;display:inline;"><b>Welcome to <!--<img draggable="false" src="assets/misc/banner_joel.png" class="banner" style="display:inline-block;">--><dynamic var="joelName">Joel</dynamic>!</b></span><br>
+		<p style="font-size: 14pt;">Click anywhere to launch the app.</p>
+		<p style="font-size: 10pt;">Version <span id="launcherversion">not found.</span><img src="assets/misc/feather_base.png" class="mini-icon"></p>
+	</div>
+
+  </div>
+  <div id="updater-page" class="page" style="font-size:15pt;">
+	<br><img src="assets/images/Joel_Party_TA2.png" width="256" id="updateMascot"><br>
+	<span style="font-size: 15pt;font-weight: bold;">A new update for Joel is available!</span><br>
+	<b>Current Version:</b> <span id="updaterversion">not found</span><br>
+	<b>Latest Version:</b> <span id="updaterlatest">not found</span><br>
+	<p id="updaterinfo">
+		<i>Update info not found...</i>
+	</p>
+	<div id="updateroptions">
+
+	</div>
+  </div>
+  <div id="changelog-page" class="page" onclick="this.style.display = 'none';">
+
+  </div>
+  <div id="default-page" class="page" style="display:none;">
+    <img draggable="false" src="assets/Joel_Original_TSA1.png" id="joel_main" class="joelBirb defaultHand"><br>
+	<div class="textArea defaultHand" id="alltext" >
+    <span style="font-size: 45pt;"><b><dynamic var="joelName" id="birbName">Joel</dynamic></b></span><br>
+    <p style="font-size: 14pt;" id="tooltip"><dynamic var="joelName">Joel</dynamic> is here to brighten your day.<br><br>Click to get started!
+	</p>
+	<!--<input id="answer-typed" style="font-family: Quicksand;" placeholder="Type your answer here">-->
+	</div>
+	<!--<div id="nameprompt">What's your name? <input id="name" placeholder="" /></div> -->
+	<canvas id="confetti-holder" class="fullcanvas" onclick="doRandomThing();this.style.display = 'none';"></canvas>
+  </div>
+  <div id="menu-page" class="page"><br>
+	<img draggable="false" src="assets/misc/banner_joel.png" class="banner"><br>
+	<p style="font-size: 14pt;">The happi lil birb here to bring a smile to your face.</p>
+	
+	<div id="settings" style="font-size: 14pt; ">
+	<span style="font-size: 36pt;">Options</span><br>
+	
+		<div class="toggleGroup">
+			
+
+			<div class="toggle" onclick="toggleInput(this); secretReveal();">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" checked id="sfxsetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_true.png" class="toggleicon">
+							SFX
+				</label>
+			</div>
+			<div class="toggle" onclick="toggleInput(this); toggleMusic();">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" checked id="musicsetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_true.png" class="toggleicon">
+							Music
+				</label>
+			</div>
+
+			<div class="toggle" onclick="toggleInput(this); toggleMusic();">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" disabled id="ambiencesetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_false_disabled.png" class="toggleicon">
+							Ambience
+				</label>
+			</div>
+			<div class="toggle" onclick="toggleInput(this);">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" checked id="bgmusicsetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_true.png" class="toggleicon">
+							Background music
+				</label>
+			</div>
+			<div class="toggle" onclick="toggleInput(this);">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" checked id="partysetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_true.png" class="toggleicon">
+							Confetti
+				</label>
+			</div>
+			<div class="toggle invertToggle" onclick="toggleInput(this); invertPositions();">
+				<label class="click2">
+					<input type="checkbox" style="display:none;" id="invertsetting">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_false.png" class="toggleicon">
+							Invert positioning
+				</label>
+			</div>
+			<div class="toggle" onclick="toggleInput(this);" >
+				<label class="click2" style="display:none;" id="darkToggleGroup" onclick="if(this.children[0].disabled){escapeAttempt();}turnDarkSide();">
+					<input type="checkbox" style="display:none;" id="darkSide">
+						<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_false.png" id="dstoggle" class="toggleicon">
+							Dark Side
+				</label>
+				<span id="darkprogress"><img class="toggleicon" src="assets/misc/secretreveal/joel_toggle_0.png" style="vertical-align:middle;" draggable="false"/> ...</span>
+			</div>
+		</div>
+		<a style="font-size: 12pt;" class="makeclick" href="javascript:void(0)" onclick="document.getElementById('settings-pronouns-page').style.display = 'block';document.getElementById('menu-page').style.display = 'none';" id="pronouns">Name & Pronouns settings</a>
+		<a style="font-size: 12pt;display:block;" class="makeclick" href="javascript:void(0)" onclick="document.getElementById('story-page').style.display = 'block';" id="storylink">Story Builder</a>
+		<a style="font-size: 12pt;display:none;" class="makeclick" href="javascript:void(0)" onclick="joelDebug();document.getElementById('menu-button').click();" id="debuglink">DEBUG MENU</a>
+
+	</div>
+	
+	<br>Join the <dynamic var="joelName">Joel</dynamic> <a href="https://discord.gg/TBcjteby42">Discord Server!</a>
+	</p>
+	<p style="font-size: 14pt;" id="history">This app began as a simple little doodle by Josie, dubbed "Joel".<br> Now, <dynamic var="joelName">Joel</dynamic> has grown up into the app you see before you.</p>
+	<p style="font-size: 14pt;">
+		<a href="javascript:void(0)" class="makeclick" onclick="document.getElementById('credits-page').style.display = 'block';document.getElementById('menu-page').style.display = 'none';document.getElementById('defaultfocus').focus();">Credits & Contact</a>
+	</p>
+	<p style="font-size: 10pt;">v<span id="version">Version number not found</span>, <span id="build">Build not found</span></p>
+	
+  </div>
+  <div id="settings-pronouns-page" class="page" style="display:none;font-size: 18pt;">
+	<br>
+	<span style="font-size:2em;">Pronouns</span>
+	<p style="font-size: 14pt;">
+		<!--<label><input type="radio" name="pronoun" value="['he', 'him', 'his']" checked onclick="updatePronouns();"> He / Him</label><br>
+		<label><input type="radio" name="pronoun" value="['she', 'her', 'her']" onclick="updatePronouns();"> She / Her</label><br>
+		<label><input type="radio" name="pronoun" value="['they', 'them', 'their']" onclick="updatePronouns();"> They / Them</label><br>-->
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="pronoun" value="['he', 'him', 'his', 'he\'s']" checked>
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_true.png" class="radioicon">
+						He / Him
+			</label>
+		</div>
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="pronoun" value="['she', 'her', 'her', 'she\'s']">
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_false.png" class="radioicon">
+						She / Her
+			</label>
+		</div>
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="pronoun" value="['they', 'them', 'their', 'they\'re']">
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_false.png" class="radioicon">
+						They / Them
+			</label>
+		</div>
+	</p>
+
+	<span style="font-size:2em;">Birb Name</span>
+	<p style="font-size: 14pt;">
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="birbname" value="Joel" checked>
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_true.png" class="radioicon">
+						Joel
+			</label>
+		</div>
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="birbname" value="Joelle">
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_false.png" class="radioicon">
+						Joelle
+			</label>
+		</div>
+		<div class="radio" onclick="toggleRadio(); updatePronouns();">
+			<label class="click2">
+				<input style="display:none;" type="radio" name="birbname" value="Jo">
+					<img draggable="false" style="vertical-align:middle;" src="assets/misc/radio_false.png" class="radioicon">
+						Jo
+			</label>
+		</div>
+	</p>
+
+	<p style="font-size: 14pt;">This is <dynamic var="joelName">Joel</dynamic> the birb, and <dynamic var="pronouns[3]">he's</dynamic> here to bring a smile to your face.</p>
+
+	<a href="javascript:void(0);" class="makeclick" onclick="document.getElementById('settings-pronouns-page').style.display = 'none'; document.getElementById('menu-page').style.display = 'block';">Back</a>
+  </div>
+  <div id="credits-page" class="page" style="display:none;">
+	<div id="credits" style="font-size: 14pt;"><br>
+		<span style="font-size:3em;">Credits</span>
+	
+	<div id="creators">
+		<div id="creatorIcons">
+		<img class="hover-fade-big creator" src="assets/misc/devprofiles/ReBrainerTV.png" height="80" tabindex="0" onfocus="newDev('ReBrainerTV')" id="defaultfocus" title="ReBrainerTV">
+		<img class="hover-fade-big creator" src="assets/misc/devprofiles/JosieIsNotARat.png" height="80" tabindex="0" onfocus="newDev('JosieIsNotARat')" title="JosieIsNotARat">
+		<img class="hover-fade-big creator" src="assets/misc/devprofiles/Raid337.png" height="80" tabindex="0" onfocus="newDev('Raid337')" title="Raid337">
+		<img class="hover-fade-big creator" src="assets/misc/devprofiles/ciminin.png" height="80" tabindex="0" onfocus="newDev('ciminin')" title="ciminin">
+		</div>
+		<div id="creatorInfo" style="max-width:75%;margin-left:auto;margin-right:auto;">
+			<b id="creatorName" style="font-size:1.3em"></b><br> 
+			<span id="creatorJob" style="font-size:0.6em"></span><br>
+			<i id="creatorQuote"></i>
+			<p id="creatorDesc"></p>
+			<b id="creatorDiscord"></b>
+		</div>
+	</div>
+	
+	<hr>
+
+	<div id="darksidecredits" style="display:none;">
+		Dark side theme: "Hitman" Kevin MacLeod (<a href="https://incompetech.com/">incompetech.com</a>)<br>
+		Licensed under Creative Commons: By Attribution 4.0 License<br>
+		<a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a><br>
+	</div>
+
+	<br>We got a few icons from <a href="http://materialdesignicons.com/">http://materialdesignicons.com/</a>.<br>
+
+	<br>To contact us, you can join our <a href="https://discord.gg/TBcjteby42">Discord Server</a> or e-mail us at <a href="mailto:joelteamofficial@gmail.com">joelteamofficial@gmail.com</a>. We'd love to hear from you!</p>
+	<a href="javascript:void(0);" class="makeclick" onclick="document.getElementById('credits-page').style.display = 'none'; document.getElementById('menu-page').style.display = 'block';">Back</a>
+	<br><br>
+	</div>
+  </div>
+  <div id="settings-music-page" class="page" style="display:none;">
+	<br>
+	<span style="font-size:3em;">Music Settings</span><br>
+	<b>Volume</b> <input type="range" class="slider"><br>
+	<b>Turn off specific themes:</b><br>
+	<div class="toggle" onclick="toggleInput(this); secretReveal();">
+		<label class="click2">
+			<input type="checkbox" style="display:none;" checked id="sfxsetting">
+				<img draggable="false" style="vertical-align:middle;" src="assets/misc/joel_true.png" class="toggleicon">
+					Main Theme
+		</label>
+	</div>
+
+
+	<a href="javascript:void(0);" class="makeclick" onclick="document.getElementById('settings-music-page').style.display = 'none'; document.getElementById('menu-page').style.display = 'block';">Back</a>
+	<br>
+  </div>
+
+  </body>
+</html>
+
+<script>
+	function checkassets(){
+		var missingassets = [];
+		if(typeof platform === 'undefined'){
+			missingassets.push("script.js");
+		}
+		if(getComputedStyle(document.getElementById("detector")).display != "none"){
+			missingassets.push("style.css");
+		}
+		if(typeof general === 'undefined'){
+			missingassets.push("images.js");
+		}
+		if(typeof profiles === 'undefined'){
+			missingassets.push("profiles.js");
+		}
+		if(typeof quotes === 'undefined'){
+			missingassets.push("quotes.js");
+		}
+		if(typeof version === 'undefined'){
+			missingassets.push("version.js");
+		}
+		if(typeof addScene === 'undefined'){
+			missingassets.push("storybuilder.js");
+		}
+		if(missingassets.length > 0){
+			//alert("Oops! It looks like Joel doesn't have the core dependencies he requires.\nPlease contact the developers for assistance.");
+			console.log("Oops! It looks like Joel doesn't have the core dependencies he requires.\nMissing:");
+			console.log(missingassets);
+			document.body.innerHTML = "<span style='color:black;'>Oops! It looks like Joel doesn't have the core dependencies he requires.<br>Reload the page, and if the issue persists, please contact the developers for assistance.<br><br></span>";
+		}
+	}
+</script>
+<datalist id="static-sprites">
+	<option value="assets/static/Joel_Bowtie_TS1.png">
+	<option value="assets/static/Joel_Flower_TS1.png">
+	<option value="assets/static/Joel_Happi_TS1.png">
+	<option value="assets/static/Joel_Original_TSA1.png">
+	<option value="assets/static/Joel_Posessed_TS1.png">
+	<option value="assets/images/Joel_Cooldude_TA5.png">
+	<option value="assets/images/Joel_Party_TA2.png">
+	<option value="assets/images/Joel_Skateboard_TA3.png">
+	<option value="assets/images/Joel_Sleep_TA4.png">
+	<option value="assets/images/Joel_Tweet_TA4.png">
+	<option value="assets/images/Joel_Worm_TA5.png">
+</datalist>
+
+<datalist id="animation-sets">
+	<option value="worm">
+	<option value="cooldude">
+	<option value="party">
+	<option value="party_loop">
+	<option value="singing">
+	<option value="sleeping">
+	<option value="sleeping_loop">
+</datalist>

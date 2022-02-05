@@ -1,0 +1,165 @@
+Folder Sorting Format:
+
+Joel_Original_TSA1:
+Original img serves as both a static image and the first slide of some animations.
+Animations with Joel_Original_TSA1 as the first slide will start on TA2 instead of TA1.
+
+Animations: Houses multiple other folders sorting animation slides for each individual animation.
+Fonts: Houses "Templates" and "TTF" folders, each containing resources necessary to implement Joel's custom font. 
+Gifs_T: Transparent gifs.
+Images: includes all images. (static, animation slides, assets, etc) (does not include .tif or .gif files)
+Misc: Non-character images. (buttons, toggles, speech bubbles, particles, etc.)
+Misc_Files: .tif and other non-.png files.
+Static: Non-animated sprites.
+Filename_Key.txt: A key describing all files and folders in Joel.zip, as well as their locations. To be updated as files are added/edited.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Joel_Textures.zip:
+
+Animations:
+Blink
+- (to-do)
+CoolDude
+- Joel_Original_TSA1
+- Joel_CoolDude_TA2
+- Joel_CoolDude_TA3
+- Joel_CoolDude_TA4
+- Joel_CoolDude_TA5
+Hug
+- (to-do)
+Look
+- Joel_Original_TSA1
+- Joel_LookLeft_TA2
+Party
+- Joel_Party_TA1
+- Joel_Party_TA2
+- Joel_Party_TA3
+- Joel_Party_TA4
+Skateboard
+- Joel_Skateboard_TA1
+- Joel_Skateboard_TA2
+- Joel_Skateboard_TA3
+- Joel_Skateboard_TA4
+- Joel_Skateboard_TA5
+Sleep
+- Joel_Sleep_TA1
+- Joel_Sleep_TA2
+- Joel_Sleep_TA3
+- Joel_Sleep_TA4
+Tweet
+- Joel_Tweet_TA1
+- Joel_Tweet_TA2
+- Joel_Tweet_TA3
+- Joel_Tweet_TA4
+Worm
+- Joel_Original_TSA1
+- Joel_Worm_TA2
+- Joel_Worm_TA3
+- Joel_Worm_TA4
+- Joel_Worm_TA5
+
+Fonts: 
+Templates
+- customfont1.png
+- customfont2.png
+TTF
+- Joelfont1-Regular.ttf
+- Joelfont2-Regular.ttf
+
+Gifs_T:
+- (to-do)
+
+Images:
+- Joel_Banner_TS1
+- Joel_Bowtie_TS1
+- Joel_CoolDude_TA2
+- Joel_CoolDude_TA3
+- Joel_CoolDude_TA4
+- Joel_CoolDude_TA5
+- Joel_Flower_TS1
+- Joel_Happi_TS1
+- Joel_LookLeft_TA2
+- Joel_Party_TA1
+- Joel_Party_TA2
+- Joel_Party_TA3
+- Joel_Party_TA4
+- Joel_Possessed_TS1
+- Joel_Skateboard_TA1
+- Joel_Skateboard_TA2
+- Joel_Skateboard_TA3
+- Joel_Skateboard_TA4
+- Joel_Skateboard_TA5
+- Joel_Sleep_TA1
+- Joel_Sleep_TA2
+- Joel_Sleep_TA3
+- Joel_Sleep_TA4
+- Joel_Tweet_TA1
+- Joel_Tweet_TA2
+- Joel_Tweet_TA3
+- Joel_Tweet_TA4
+- Joel_Worm_TA2
+- Joel_Worm_TA3
+- Joel_Worm_TA4
+- Joel_Worm_TA5
+
+Misc:
+- (to-do)
+
+Misc_files:
+- Joel_Sketch.tif (04/05/21 4:40 pm est)
+
+Static:
+- Joel_Banner_TS1
+- Joel_Bowtie_TS1
+- Joel_Flower_TS1
+- Joel_Happi_TS1
+- Joel_Original_TSA1
+- Joel_Posessed_TS1
+
+non-foldered files:
+- Filename_Key.txt
+- Joel_Original_TSA1.png
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Image Categories:
+
+Static Images:
+Joel_(image name)_(Transparent/Opaque)(Static)
+
+- Joel_Bowtie_TS1
+- Joel_Flower_TS1
+- Joel_Happi_TS1
+- Joel_Posessed_TS1
+
+Animated Images:
+Joel_(animation set name)_(Transparent/Opaque)(Animation)(slide number)
+
+- Joel_CoolDude_TA2
+- Joel_CoolDude_TA3
+- Joel_CoolDude_TA4
+- Joel_CoolDude_TA5
+- Joel_LookLeft_TA2
+- Joel_Party_TA1
+- Joel_Party_TA2
+- Joel_Party_TA3
+- Joel_Party_TA4
+- Joel_Skateboard_TA1
+- Joel_Skateboard_TA2
+- Joel_Skateboard_TA3
+- Joel_Skateboard_TA4
+- Joel_Skateboard_TA5
+- Joel_Sleep_TA1
+- Joel_Sleep_TA2
+- Joel_Sleep_TA3
+- Joel_Sleep_TA4
+- Joel_Tweet_TA1
+- Joel_Tweet_TA2
+- Joel_Tweet_TA3
+- Joel_Tweet_TA4
+- Joel_Worm_TA2
+- Joel_Worm_TA3
+- Joel_Worm_TA4
+- Joel_Worm_TA5
+
+Misc Images:
+Joel_(image name)_(Transparent/Opaque)(Misc)
