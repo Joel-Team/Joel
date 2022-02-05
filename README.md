@@ -5,7 +5,7 @@ Joel the Birb is available right here on your screen/in your pocket to inspire, 
 You can view Joel online on his [Website](https://joel-online.web.app). You can also [download the android app](https://joel-online.web.app/apk/latest) or see him on Newgrounds.
 
 ## Art
-You can find Joel's full assets over at the `art` branch.
+You can find all of Josie's art in `assets/Josie's Art Files`, including marketing resources. All organized art and sounds used in the program can be found in `assets`.
 
 # Birb
 ![alt](https://media.discordapp.net/attachments/827393319021707294/827761278792892446/ezgif.com-gif-maker_4.gif)
