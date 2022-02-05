@@ -23,7 +23,6 @@
 	<script src="script.js" defer></script>
 	<script src="quotes.js" defer></script>
 	<script src="storybuilder.js" defer></script>
-	<script src="js/installable.js" id="instscript" defer></script>
 
 		<!-- Google Firebase Notification scripts -->
 		<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
@@ -101,12 +100,6 @@
 				Joel needs javascript in order to run. Please load this page in a different browser.
 			</noscript>
    		</div>
-	<div style="position:absolute;top:50%;left:50%; transform: translate(-50%, -50%); background-color: #1b1b1b; width:100%;height:100%;" id="installContainer" class="hidden">
-		<span style="font-size: 45pt;display:inline;"><b>Install app</b></span><br>
-		<p style="font-size: 14pt;">Would you like to download Joel for your device as a web app?<br>
-		<a href="javascript:void(0)" id="butInstall">Sure!</a><br><br>
-		<a href="javascript:void(0)" onclick="launchable = true; launch();">No, thank you</a></p>
-	</div>
 	<div style="position:absolute;top:50%;left:50%; transform: translate(-50%, -50%); display:none;" id="launcher-details"> 
 		<span style="font-size: 45pt;display:inline;"><b>Welcome to <!--<img draggable="false" src="assets/misc/banner_joel.png" class="banner" style="display:inline-block;">--><dynamic var="joelName">Joel</dynamic>!</b></span><br>
 		<p style="font-size: 14pt;">Click anywhere to launch the app.</p>

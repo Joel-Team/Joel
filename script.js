@@ -7,13 +7,6 @@ if(location.href.includes("uploads.ungrounded.net")) {
 	build = "Newgrounds build";
 	preload();
 	platform = "newgrounds";
-} else if(location.href.includes("josie")){
-	build = "Josie build";
-	joelName = "Joel";
-	pronouns = ["he", "him", "his"];
-	document.getElementById("pronouns").style.display = "none";
-	updatePronouns();
-	platform = "web";
 } else if(location.href.includes(".web.app")){
 	build = "Online build";
 	preload();
@@ -49,18 +42,12 @@ if(location.href.includes("uploads.ungrounded.net")) {
 document.getElementById('debug-page').style.display='none';
 
 var launchable = true;
+var appInstalled = false;
 
 //Make the app installable if the platform is web.
 function checkInstallable(){
 	if(platform === "web"){
-		if (window.matchMedia('(display-mode: standalone)').matches) {  
-			//App is installed, act as such
-			launchable = true;
-		} else if(!appInstalled) {
-			launchable = false;
-		} else {
-			launchable = true;
-		}
+		launchable = true;
 		revealLauncher();
 	} else {
 		launchable = true;
@@ -909,9 +896,7 @@ function updatePronouns(){
 	}
 	document.title = joelName +" App // v" + version;
 	document.getElementsByClassName("banner")[0].src="assets/misc/banner_" + joelName.toLowerCase() + ".png";
-	if(build != "Josie build"){
 		saveSettings();
-	}
 }
 
 //document.querySelector('input[name="pronoun"]:checked').value;
@@ -963,17 +948,15 @@ function loadSettings(){
 	settings.music.tracks.lullaby = true;
 	settings.music.tracks.dark = true;
 
-	if(build != "Josie build"){
-		document.querySelector('input[name="birbname"][value="' + settings.pronouns.name + '"]').checked = true;
+	document.querySelector('input[name="birbname"][value="' + settings.pronouns.name + '"]').checked = true;
 
-		//The following is a fix for settings saved before v0.0.21beta that didn't include 4 entries in pronouns.
+	//The following is a fix for settings saved before v0.0.21beta that didn't include 4 entries in pronouns.
 
-		//OLD document.querySelector('input[name="pronoun"][value="' + settings.pronouns.values + '"]').checked = true;
+	//OLD document.querySelector('input[name="pronoun"][value="' + settings.pronouns.values + '"]').checked = true;
 
-		for(var i = 0; i < document.querySelectorAll('input[name="pronoun"]'); i++){
-			if(eval(document.querySelectorAll('input[name="pronoun"]')[i].value)[0] == eval(settings.pronouns.values)[0]){
-				document.querySelectorAll('input[name="pronoun"]')[i].checked = true;
-			}
+	for(var i = 0; i < document.querySelectorAll('input[name="pronoun"]'); i++){
+		if(eval(document.querySelectorAll('input[name="pronoun"]')[i].value)[0] == eval(settings.pronouns.values)[0]){
+			document.querySelectorAll('input[name="pronoun"]')[i].checked = true;
 		}
 	}
 

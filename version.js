@@ -1,2 +1,2 @@
-var version = "0.0.21beta";
-var versionId = [0, 0, 21, 0, "beta"];
+var version = "1.0";
+var versionId = [1, 0, 0, 0, "stable"];
