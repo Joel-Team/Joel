@@ -2,7 +2,7 @@
 Joel the Birb is available right here on your screen/in your pocket to inspire, comfort, and of course, dig for worms. Our goal for this project is simple- to bring a smile to your face! This project began as a simple doodle of a small birb, which eventually grew into the birb you see here today.
 
 ## View
-You can view Joel online on his [Website](https://joel-online.web.app). You can also [download the android app](https://joel-online.web.app/apk/latest) or see him on Newgrounds.
+You can view Joel online on his [Website](https://joel-online.web.app). You can also [download the android app](https://joel-online.web.app/apk/latest) or see him [on Newgrounds](https://www.newgrounds.com/portal/view/794491).
 
 ## Art
 You can find all of Josie's art in `assets/Josie's Art Files`, including marketing resources. All organized art and sounds used in the program can be found in `assets`.
