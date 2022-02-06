@@ -11,6 +11,9 @@ It's recommended that you open `.tif` files in [Sketchbook](https://www.sketchbo
 # Birb
 ![alt](https://media.discordapp.net/attachments/827393319021707294/827761278792892446/ezgif.com-gif-maker_4.gif)
 
+# Modding
+A quick modding guide is available [here]()
+
 # Credits
 - ReBrainerTV - Programmer and Project Planner
   - [YouTube](https://www.youtube.com/channel/UCnwCOinP89LbzbhdFYyU7jg) | Discord: ReBrainerTV#9659
