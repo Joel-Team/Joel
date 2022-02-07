@@ -14,6 +14,7 @@ I'm entirely fine with you modding whatever you want. However, I have a few requ
 ### You'll need:
 - The source code (wow, you can get that here!)
 - A code editor (Visual Studio Code is best)
+- Basic knowledge of Javascript/HTML or intermediate knowledge of how code generally works
 - A browser (which you should be viewing this on anyway)
 - An internet conenction to download the code
 ###### (<a href="#modding-guide">go to top</a>)
